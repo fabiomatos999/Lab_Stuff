@@ -6,6 +6,10 @@ public class Lab04P1Wrapper {
 		Lab04P1Wrapper.List<String> l = new Lab04P1Wrapper.ArrayList<>();
 
 		l.add("Fer");
+		l.add("Bob");
+		l.add("Bob");
+		l.add("Fabio");
+		l.remove("Bob");
 	}
 
 
@@ -136,9 +140,9 @@ public class Lab04P1Wrapper {
 			// TODO Auto-generated method stub
             for(int i=0; i < size(); i++)
 			{
-				if(get(i).equals(elm))
+				if(elements[i].equals(elm))
 				{
-					for(int j = i; j < size(); i++)
+					for(int j = i; j < size() - 1; j++)
 					{
 						set(get(j+1),j);
 					}
