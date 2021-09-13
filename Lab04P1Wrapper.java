@@ -247,7 +247,14 @@ public class Lab04P1Wrapper {
 		@Override
 		public int lastIndex(E elm) {
 			// TODO Auto-generated method stub
-			return 0;
+			for(int i = size() -1; i < 0; i--)
+			{
+				if(get(i).equals(elm))
+				{
+					return i;
+				}
+			}
+			return -1;
 		}
 
 		/**
@@ -257,6 +264,10 @@ public class Lab04P1Wrapper {
 		@Override
 		public boolean isEmpty() {
 			// TODO Auto-generated method stub
+			if(currentSize == 0)
+			{
+				return true;
+			}
 			return false;
 		}
 	}
