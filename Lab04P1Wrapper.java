@@ -1,6 +1,14 @@
 import java.util.Iterator;
 
 public class Lab04P1Wrapper {
+
+	public static void main(String[] args) {
+		Lab04P1Wrapper.List<String> l = new Lab04P1Wrapper.ArrayList<>();
+
+		l.add("Fer");
+	}
+
+
 	public static interface List<E>{
 
 		/*METHODS SPECIFIED IN SECTION 2.4*/
