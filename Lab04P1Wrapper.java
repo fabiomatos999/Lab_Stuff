@@ -9,8 +9,10 @@ public class Lab04P1Wrapper {
 		l.add("Bob");
 		l.add("Bob");
 		l.add("Fabio");
-		l.remove("Bob");
+		l.contains("Bob");
+		l.firstIndex("Fabio");
 		l.clear();
+		l.isEmpty();
 	}
 
 
@@ -141,7 +143,7 @@ public class Lab04P1Wrapper {
 			// TODO Auto-generated method stub
             for(int i=0; i < elements.length -1;i++)
 			{
-				if(elements[i].equals(elm))
+				if(elements[i] != null && elements[i].equals(elm))
 				{
 					for(int j = i; j < elements.length -1; j++)
 					{
@@ -197,9 +199,9 @@ public class Lab04P1Wrapper {
 		@Override
 		public boolean contains(E elm) {
 			// TODO Auto-generated method stub
-			for(int i = 0; i  < size() ; i++)
+			for(int i = 0; i  < elements.length; i++)
 			{
-				if(elements[i].equals(elm))
+				if(elements[i] != null && elements[i].equals(elm))
 				{
 					return true;
 				}
@@ -240,7 +242,7 @@ public class Lab04P1Wrapper {
 			// TODO Auto-generated method stub
 			for(int i = 0; i < size(); i++)
 			{
-				if(elements[i].equals(elm))
+				if(elements[i] != null && elements[i].equals(elm))
 				{
 					return i;
 				}
@@ -261,9 +263,9 @@ public class Lab04P1Wrapper {
 		@Override
 		public int lastIndex(E elm) {
 			// TODO Auto-generated method stub
-			for(int i = size() -1; i < 0; i--)
+			for(int i =elements.length -1; i > 0; i--)
 			{
-				if(elements[i].equals(elm))
+				if(elements[i] != null && elements[i].equals(elm))
 				{
 					return i;
 				}
@@ -282,13 +284,13 @@ public class Lab04P1Wrapper {
 			{
 				for(int i = 0; i < elements.length; i++)
 				{
-					if(elements[i].equals(null) == false)
+					if(elements[i] != null)
 					{
 						return false;
 					}
 				}
 			}
-			else if(elements.length == 0)
+			else if(currentSize == 0)
 			{
 				return true;
 			}
