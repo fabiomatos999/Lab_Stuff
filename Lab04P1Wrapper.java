@@ -163,7 +163,7 @@ public class Lab04P1Wrapper {
 			int copies = 0;
 			for(int i = 0; i < size(); i++)
 			{
-				if(get(i).equals(elm))
+				if(elements[i].equals(elm))
 				{
 					remove(elm);
 					copies++;
