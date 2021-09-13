@@ -10,6 +10,7 @@ public class Lab04P1Wrapper {
 		l.add("Bob");
 		l.add("Fabio");
 		l.remove("Bob");
+		l.clear();
 	}
 
 
@@ -138,13 +139,13 @@ public class Lab04P1Wrapper {
 		@Override
 		public boolean remove(E elm) {
 			// TODO Auto-generated method stub
-            for(int i=0; i < size(); i++)
+            for(int i=0; i < elements.length -1;i++)
 			{
 				if(elements[i].equals(elm))
 				{
-					for(int j = i; j < size() - 1; j++)
+					for(int j = i; j < elements.length -1; j++)
 					{
-						set(get(j+1),j);
+						elements[j] = elements[j+1];
 					}
 					return true;
 				}
@@ -167,6 +168,7 @@ public class Lab04P1Wrapper {
 				{
 					remove(elm);
 					copies++;
+					i--;
 				}
 			}
 			return copies;
@@ -177,9 +179,9 @@ public class Lab04P1Wrapper {
 		 */
 		@Override
 		public void clear() {
-			for(int i = 0; i < size() ; i++)
+			for(int i = 0; i < elements.length ; i++)
 			{
-				set(null,i);
+				elements[i] = null;
 			}
 			currentSize = 0;
 			// TODO Auto-generated method stub
@@ -197,7 +199,7 @@ public class Lab04P1Wrapper {
 			// TODO Auto-generated method stub
 			for(int i = 0; i  < size() ; i++)
 			{
-				if(get(i).equals(elm))
+				if(elements[i].equals(elm))
 				{
 					return true;
 				}
@@ -211,7 +213,7 @@ public class Lab04P1Wrapper {
 		 */
 		@Override
 		public E first() {
-			return get(0);
+			return elements[0];
 		}
 
 		/**
@@ -221,7 +223,7 @@ public class Lab04P1Wrapper {
 		@Override
 		public E last() {
 			// TODO Auto-generated method stub
-			return get(size()-1);
+			return elements[elements.length -1];
 		}
 
 		/**
@@ -238,7 +240,7 @@ public class Lab04P1Wrapper {
 			// TODO Auto-generated method stub
 			for(int i = 0; i < size(); i++)
 			{
-				if(get(i).equals(elm))
+				if(elements[i].equals(elm))
 				{
 					return i;
 				}
@@ -261,7 +263,7 @@ public class Lab04P1Wrapper {
 			// TODO Auto-generated method stub
 			for(int i = size() -1; i < 0; i--)
 			{
-				if(get(i).equals(elm))
+				if(elements[i].equals(elm))
 				{
 					return i;
 				}
@@ -276,7 +278,17 @@ public class Lab04P1Wrapper {
 		@Override
 		public boolean isEmpty() {
 			// TODO Auto-generated method stub
-			if(currentSize == 0)
+			if(currentSize > 0)
+			{
+				for(int i = 0; i < elements.length; i++)
+				{
+					if(elements[i].equals(null) == false)
+					{
+						return false;
+					}
+				}
+			}
+			else if(elements.length == 0)
 			{
 				return true;
 			}
