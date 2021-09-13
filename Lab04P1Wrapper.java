@@ -128,8 +128,12 @@ public class Lab04P1Wrapper {
 			// TODO Auto-generated method stub
             for(int i=0; i < size(); i++)
 			{
-				if(get(i) == elm)
+				if(get(i).equals(elm))
 				{
+					for(int j = i; j < size(); i++)
+					{
+						set(get(j+1),j);
+					}
 					return true;
 				}
 			}
@@ -147,10 +151,9 @@ public class Lab04P1Wrapper {
 			int copies = 0;
 			for(int i = 0; i < size(); i++)
 			{
-				if(get(i) == elm)
+				if(get(i).equals(elm))
 				{
-					remove(i);
-					i--;
+					remove(elm);
 					copies++;
 				}
 			}
@@ -182,7 +185,7 @@ public class Lab04P1Wrapper {
 			// TODO Auto-generated method stub
 			for(int i = 0; i  < size() ; i++)
 			{
-				if(get(i) == elm)
+				if(get(i).equals(elm))
 				{
 					return true;
 				}
@@ -196,8 +199,7 @@ public class Lab04P1Wrapper {
 		 */
 		@Override
 		public E first() {
-			// TODO Auto-generated method stub
-			return null;
+			return get(0);
 		}
 
 		/**
@@ -207,7 +209,7 @@ public class Lab04P1Wrapper {
 		@Override
 		public E last() {
 			// TODO Auto-generated method stub
-			return null;
+			return get(size()-1);
 		}
 
 		/**
@@ -222,7 +224,14 @@ public class Lab04P1Wrapper {
 		@Override
 		public int firstIndex(E elm) {
 			// TODO Auto-generated method stub
-			return 0;
+			for(int i = 0; i < size(); i++)
+			{
+				if(get(i).equals(elm))
+				{
+					return i;
+				}
+			}
+			return -1;
 		}
 		
 		/**
