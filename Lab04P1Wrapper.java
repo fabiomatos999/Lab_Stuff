@@ -126,7 +126,13 @@ public class Lab04P1Wrapper {
 		@Override
 		public boolean remove(E elm) {
 			// TODO Auto-generated method stub
-            for(int i=0; i < size())
+            for(int i=0; i < size(); i++)
+			{
+				if(get(i) == elm)
+				{
+					return true;
+				}
+			}
 			return false;
 		}
 		
