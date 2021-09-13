@@ -144,7 +144,17 @@ public class Lab04P1Wrapper {
 		@Override
 		public int removeAll(E elm) {
 			// TODO Auto-generated method stub
-			return 0;
+			int copies = 0;
+			for(int i = 0; i < size(); i++)
+			{
+				if(get(i) == elm)
+				{
+					remove(i);
+					i--;
+					copies++;
+				}
+			}
+			return copies;
 		}
 
 		/**
@@ -152,6 +162,11 @@ public class Lab04P1Wrapper {
 		 */
 		@Override
 		public void clear() {
+			for(int i = 0; i < size() ; i++)
+			{
+				set(null,i);
+			}
+			currentSize = 0;
 			// TODO Auto-generated method stub
 		}
 
@@ -165,6 +180,13 @@ public class Lab04P1Wrapper {
 		@Override
 		public boolean contains(E elm) {
 			// TODO Auto-generated method stub
+			for(int i = 0; i  < size() ; i++)
+			{
+				if(get(i) == elm)
+				{
+					return true;
+				}
+			}
 			return false;
 		}
 
