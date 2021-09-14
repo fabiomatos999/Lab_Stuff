@@ -5,6 +5,10 @@ import java.util.NoSuchElementException;
 
 public class Lab04P2Wrapper {
 	
+	public static void main(String[] args) {
+		Lab04P2Wrapper.List<String> l = new Lab04P2Wrapper.ArrayList<>();
+
+	}
 	public static interface List<E> extends Iterable<E> {
 		
 		public int size();
@@ -19,6 +23,7 @@ public class Lab04P2Wrapper {
 		public E replace(int position, E newElement);
 		public void clear();
 		public List<E> reverse();
+		public List<E> swap(List<E> list,int leftIndex,int rightIndex);
 		
 		//DO NOT REMOVE THESE, TESTS WILL FAIL
 		public Object[] toArray();
@@ -217,8 +222,47 @@ public class Lab04P2Wrapper {
 		@Override
 		public List<E> reverse() {
 			//ADD YOUR CODE HERE
+			List<E> ret = new ArrayList<E>();
+			int leftIndex = 0;
+			int rightIndex = currentSize -1;
+			if(currentSize == 0)
+			{
+				return ret;
+			}
+			for(int i = 0; i < currentSize; i++)
+			{
+				ret.add(elements[i]);
+			}
+			if(currentSize%2 ==0)
+			{
+				while(rightIndex - leftIndex != -1)
+				{
+					ret = swap(ret,leftIndex,rightIndex);
+					leftIndex++;
+					rightIndex--;
+				}
+			}
+			else
+			{
+				while(rightIndex - leftIndex != 0)
+				{
+					ret = swap(ret,leftIndex,rightIndex);
+					leftIndex++;
+					rightIndex--;
+				}
+
+			}
 			
-			return null; //Dummy Return, delete this when implementing your answer
+			return ret; //Dummy Return, delete this when implementing your answer
+		}
+
+		@Override
+		public List<E> swap(List<E> list,int leftIndex,int rightIndex)
+		{
+			E temp = list.get(leftIndex);
+			list.replace(leftIndex, list.get(rightIndex));
+			list.replace(rightIndex,temp);
+			return list;
 		}
 
 	}
