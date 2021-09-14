@@ -225,7 +225,7 @@ public class Lab04P1Wrapper {
 		@Override
 		public E last() {
 			// TODO Auto-generated method stub
-			return elements[elements.length -1];
+			return elements[currentSize -1];
 		}
 
 		/**
