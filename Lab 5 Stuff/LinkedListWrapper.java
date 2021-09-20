@@ -3,7 +3,7 @@ import java.util.Iterator;
 public class LinkedListWrapper {
 
 	public static void main(String[] args) {
-		LinkedListWrapper.List<String> uwu = new LinkedListWrapper.LinkedList<>();
+		LinkedListWrapper.List<String> uwu = new LinkedListWrapper.LinkedList<String>();
 		uwu.add("Yes");
 		uwu.add("No");
 		uwu.add("Yesnt");
@@ -187,6 +187,14 @@ public class LinkedListWrapper {
 		public boolean remove(E elm) {
             Node<E> temp = head;
 			int currIndex = 0;
+			if(head.getElement().equals(elm))
+			{
+				Node<E> ntr = head.getNext();
+				head.setElement(head.getNext().getElement());
+				head.setNext(head.getNext().getNext());
+				ntr.clear();
+				ntr = null;
+			}
 			while(temp.getElement().equals(null) ==false)
 			{
 				if(temp.getElement().equals(elm))
@@ -223,6 +231,14 @@ public class LinkedListWrapper {
 			 * DO NOT DO THIS IMPLEMENTATION, make it O(n)
 			 */
 			Node<E> temp = head;
+			if(head.getElement().equals(elm))
+			{
+				Node<E> ntr = head.getNext();
+				head.setElement(head.getNext().getElement());
+				head.setNext(head.getNext().getNext());
+				ntr.clear();
+				ntr = null;
+			}
 			int occurances = 0;
 			int currIndex = 0;
 			while(temp.getElement().equals(null) ==false)
