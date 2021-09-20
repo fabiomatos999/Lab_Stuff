@@ -10,6 +10,7 @@ public class LinkedListWrapper {
 		uwu.add("Nont")	;
 		uwu.add("No");
 		uwu.add("Yes");
+		uwu.remove("Nont");
 	}
 	
 	public static interface List<E>{
@@ -194,6 +195,7 @@ public class LinkedListWrapper {
 					prev = findNode(currIndex -1);
 					prev.setNext(temp.getNext());
 					temp = null; 
+					return true;
 				}
 				else
 				{
