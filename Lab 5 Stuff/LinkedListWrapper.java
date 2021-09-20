@@ -1,6 +1,17 @@
 import java.util.Iterator;
 
 public class LinkedListWrapper {
+
+	public static void main(String[] args) {
+		LinkedListWrapper.List<String> uwu = new LinkedListWrapper.LinkedList<>();
+		uwu.add("Yes");
+		uwu.add("No");
+		uwu.add("Yesnt");
+		uwu.add("Nont")	;
+		uwu.add("No");
+		uwu.add("Yes");
+	}
+	
 	public static interface List<E>{
 
 		/*METHODS SPECIFIED IN SECTION 2.4*/
