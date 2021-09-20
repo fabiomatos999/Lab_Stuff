@@ -174,7 +174,22 @@ public class LinkedListWrapper {
 		@Override
 		public boolean remove(E elm) {
             Node<E> temp = head;
-
+			int currIndex = 0;
+			while(temp.getElement().equals(null) ==false)
+			{
+				if(temp.getElement().equals(elm))
+				{
+					Node<E> prev = head;
+					prev = findNode(currIndex -1);
+					prev.setNext(temp.getNext());
+					temp = null; 
+				}
+				else
+				{
+					currIndex++;
+					temp = temp.getNext();
+				}
+			}
 			return false;
 		}
 		
