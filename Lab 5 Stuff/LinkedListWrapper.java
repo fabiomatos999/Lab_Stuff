@@ -10,7 +10,7 @@ public class LinkedListWrapper {
 		uwu.add("Nont")	;
 		uwu.add("No");
 		uwu.add("Yes");
-		uwu.removeAll("Yes");
+		uwu.clear();
 	}
 	
 	public static interface List<E>{
@@ -195,7 +195,7 @@ public class LinkedListWrapper {
 				ntr.clear();
 				ntr = null;
 			}
-			while(temp.getElement().equals(null) ==false)
+			while(temp.getElement().equals(null) ==false && currIndex < currentSize)
 			{
 				if(temp.getElement().equals(elm))
 				{
@@ -204,6 +204,7 @@ public class LinkedListWrapper {
 					prev.setNext(temp.getNext());
 					temp.clear();
 					temp = null; 
+					currentSize--;
 					return true;
 				}
 				else
@@ -241,10 +242,12 @@ public class LinkedListWrapper {
 				ntr.clear();
 				ntr = null;
 				occurances++;
+				temp = head;
+				currentSize--;
 			}
-			while(temp.getElement().equals(null) ==false)
+			while(currIndex < currentSize && !temp.getElement().equals(null))
 			{
-				if(temp.getElement().equals(elm) == false && currIndex !=0)
+				if(temp.getElement().equals(elm) && currIndex !=0 && temp.getNext() != null)
 				{
 					Node<E> ntr = findNode(currIndex - 1);
 					ntr.setNext(temp.getNext());
@@ -253,7 +256,19 @@ public class LinkedListWrapper {
 					ntr = null;
 					occurances++;
 					currIndex++;
+					currentSize--;
 
+				}
+				else if(temp.getElement().equals(elm) && currIndex !=0)
+				{
+					Node<E> ntr = findNode(currIndex - 1);
+					ntr.getNext().clear();
+					ntr.setNext(null);
+					temp.clear();
+					temp = null;
+					occurances++;
+					currIndex++;
+					currentSize--;
 				}
 				else
 				{
@@ -269,6 +284,19 @@ public class LinkedListWrapper {
 		 */
 		@Override
 		public void clear() {
+			Node<E> curr = head;
+			Node<E> next = head.getNext();
+			while(currentSize>1)
+			{
+				curr.clear();
+				curr = null;
+				curr = next;
+				next = curr.getNext();
+				currentSize--;
+			}
+			curr.clear();
+			curr = null;
+			currentSize--;
 		}
 
 		/**
