@@ -10,7 +10,7 @@ public class LinkedListWrapper {
 		uwu.add("Nont")	;
 		uwu.add("No");
 		uwu.add("Yes");
-		uwu.contains("dave");
+		uwu.last();
 	}
 	
 	public static interface List<E>{
@@ -331,7 +331,7 @@ public class LinkedListWrapper {
 		 */
 		@Override
 		public E first() {
-			return null;
+			return head.element;
 		}
 
 		/**
@@ -340,7 +340,14 @@ public class LinkedListWrapper {
 		 */
 		@Override
 		public E last() {
-			return null;
+			Node<E> temp = head;
+			int currindex = 0;
+			while(currindex < currentSize - 1)
+			{
+				currindex++;
+				temp = temp.getNext();	
+			}
+			return temp.getElement();	
 		}
 
 		/**
