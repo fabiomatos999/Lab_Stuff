@@ -10,7 +10,7 @@ public class LinkedListWrapper {
 		uwu.add("Nont")	;
 		uwu.add("No");
 		uwu.add("Yes");
-		uwu.remove("Nont");
+		uwu.removeAll("Yes");
 	}
 	
 	public static interface List<E>{
@@ -231,6 +231,8 @@ public class LinkedListWrapper {
 			 * DO NOT DO THIS IMPLEMENTATION, make it O(n)
 			 */
 			Node<E> temp = head;
+			int occurances = 0;
+			int currIndex = 0;
 			if(head.getElement().equals(elm))
 			{
 				Node<E> ntr = head.getNext();
@@ -238,21 +240,20 @@ public class LinkedListWrapper {
 				head.setNext(head.getNext().getNext());
 				ntr.clear();
 				ntr = null;
+				occurances++;
 			}
-			int occurances = 0;
-			int currIndex = 0;
 			while(temp.getElement().equals(null) ==false)
 			{
-				if(temp.getElement().equals(elm))
+				if(temp.getElement().equals(elm) == false && currIndex !=0)
 				{
-					Node<E> prev = head;
-					prev = findNode(currIndex -1);
-					prev.setNext(temp.getNext());
-					temp = null; 
-					temp = prev;
+					Node<E> ntr = findNode(currIndex - 1);
+					ntr.setNext(temp.getNext());
+					ntr.getNext().clear();
+					ntr = ntr.getNext();
+					ntr = null;
 					occurances++;
-					temp.getNext();
 					currIndex++;
+
 				}
 				else
 				{
