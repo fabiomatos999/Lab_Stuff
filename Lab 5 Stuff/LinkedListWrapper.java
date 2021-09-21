@@ -10,7 +10,7 @@ public class LinkedListWrapper {
 		uwu.add("Nont")	;
 		uwu.add("No");
 		uwu.add("Yes");
-		uwu.clear();
+		uwu.contains("dave");
 	}
 	
 	public static interface List<E>{
@@ -308,6 +308,20 @@ public class LinkedListWrapper {
 		 */
 		@Override
 		public boolean contains(E elm) {
+			Node<E> temp = head;
+			int currIndex = 0;
+			while(currIndex < currentSize)
+			{
+				if(temp.element.equals(elm))
+				{
+					return true;
+				}
+				else
+				{
+					currIndex++;
+					temp = temp.getNext();
+				}
+			}
 			return false;
 		}
 
