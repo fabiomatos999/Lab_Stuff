@@ -10,7 +10,7 @@ public class LinkedListWrapper {
 		uwu.add("Nont")	;
 		uwu.add("No");
 		uwu.add("Yes");
-		uwu.last();
+		uwu.firstIndex("dave");
 	}
 	
 	public static interface List<E>{
@@ -361,6 +361,20 @@ public class LinkedListWrapper {
 		 */
 		@Override
 		public int firstIndex(E elm) {	
+			int currindex = 0;
+			Node<E> test = head;
+			while(currindex < currentSize)
+			{
+				if(test.getElement().equals(elm))
+				{
+					return currindex;
+				}
+				else
+				{
+					currindex++;
+					test = test.getNext();
+				}
+			}
 			return -1;
 		}
 		
