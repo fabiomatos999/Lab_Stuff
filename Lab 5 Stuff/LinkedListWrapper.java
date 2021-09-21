@@ -3,14 +3,14 @@ import java.util.Iterator;
 public class LinkedListWrapper {
 
 	public static void main(String[] args) {
-		LinkedListWrapper.List<String> uwu = new LinkedListWrapper.LinkedList<String>();
-		uwu.add("Yes");
-		uwu.add("No");
-		uwu.add("Yesnt");
-		uwu.add("Nont")	;
-		uwu.add("No");
-		uwu.add("Yes");
-		uwu.firstIndex("dave");
+		LinkedListWrapper.List<Integer> uwu = new LinkedListWrapper.LinkedList<Integer>();
+		uwu.add(4050);
+		uwu.add(4060);
+		uwu.add(4050);
+		uwu.add(3081);
+		uwu.add(4082);
+		uwu.add(4060);
+		uwu.removeAll(4050);
 	}
 	
 	public static interface List<E>{
@@ -249,11 +249,12 @@ public class LinkedListWrapper {
 			{
 				if(temp.getElement().equals(elm) && currIndex !=0 && temp.getNext() != null)
 				{
-					Node<E> ntr = findNode(currIndex - 1);
-					ntr.setNext(temp.getNext());
-					ntr.getNext().clear();
-					ntr = ntr.getNext();
-					ntr = null;
+					Node<E> prev = findNode(currIndex - 1);
+					Node<E> curr =  temp;
+					prev.setNext(temp.getNext());
+					curr.clear();
+					curr = null;
+					temp = prev.getNext();
 					occurances++;
 					currIndex++;
 					currentSize--;
@@ -390,7 +391,24 @@ public class LinkedListWrapper {
 
 		@Override
 		public int lastIndex(E elm) {
-			return -1;
+			Node<E> temp = head;
+			int index = -1;
+			int currIndex = 0;
+			while(currIndex < currentSize)
+			{
+				if(temp.getElement().equals(elm))
+				{
+					index = currIndex;
+					currIndex++;
+					temp = temp.getNext();
+				}
+				else
+				{
+					currIndex++;
+					temp = temp.getNext();
+				}
+			}
+			return index;
 		}
 
 		/**
@@ -399,6 +417,11 @@ public class LinkedListWrapper {
 		 */
 		@Override
 		public boolean isEmpty() {
+			if(currentSize == 0)
+			{
+				return true;
+			}
+			else
 			return false;
 		}
 	}
