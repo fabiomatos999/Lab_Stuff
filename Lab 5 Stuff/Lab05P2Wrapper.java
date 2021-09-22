@@ -1,5 +1,6 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.ArrayList;
 
 public class Lab05P2Wrapper {
     public static void main(String[] args) {
@@ -9,6 +10,7 @@ public class Lab05P2Wrapper {
         uwu.add("Herald");
         uwu.add("Timmy");
         uwu.add("Jerry");
+		uwu.changeOddEven();
     }
 	public static interface List<E> extends Iterable<E> {
 		
@@ -39,8 +41,6 @@ public class Lab05P2Wrapper {
 		public void clear();
 				
 		public void changeOddEven();
-		
-		
 
 	}
 	
@@ -305,16 +305,46 @@ public class Lab05P2Wrapper {
 		@Override
 		public void changeOddEven() {
 			// ADD YOU CODE HERE
-           Node<E> temp = header;
-           int currIndex = 0;
-           while(temp != null || currIndex == 0 || currIndex == currentSize) 
-           {
-                if(currIndex != 0 || currIndex != currentSize)
-                {
-                    
-                }
+			Node<E> temp = header.next;
+			ArrayList<E> testEven = new ArrayList<E>();
+			ArrayList<E> testOdd = new ArrayList<E>();
+			int testEvenIndex = 0;
+			int testOddIndex = 0;
+			int currIndex = 0;
+			while(currIndex < currentSize)
+			{
+				if(currIndex%2 == 0)
+				{
+					testEven.add(temp.element);
+					currIndex++;
+					temp = temp.getNext();
+				}
+				else
+				{
+					testOdd.add(temp.element);
+					currIndex++;
+					temp = temp.getNext();
+				}
+			}
+			currIndex = 0;
+			temp = header.getNext();
+			while(currIndex < testEven.size())
+			{
+				temp.setElement(testEven.get(testEvenIndex));
+				temp = temp.getNext();
+				testEvenIndex++;
+				currIndex++;
+			}
+			currIndex = 0;
+			while(currIndex < testOdd.size())
+			{
+				temp.setElement(testOdd.get(testOddIndex));
+				temp = temp.getNext();
+				testOddIndex++;
+				currIndex++;
+			}
 
-           }
+		
 		}
 
 	}
