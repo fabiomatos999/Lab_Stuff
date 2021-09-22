@@ -1,18 +1,16 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Lab05P1Wrapper {
-        public static void main(String[] args) {
-            Lab05P1Wrapper.List<String> uwu =  new Lab05P1Wrapper.SinglyLinkedList<String>();
-            uwu.add("Bob");
-            uwu.add("Sherry");
-            uwu.add("Herald");
-            uwu.add("Timmy");
-            uwu.add("Jerry");
-            uwu.reverse();
-        }
+public class Lab05P2Wrapper {
+    public static void main(String[] args) {
+        Lab05P2Wrapper.List<String> uwu = new Lab05P2Wrapper.SinglyLinkedList<String>();
+        uwu.add("Bob");
+        uwu.add("Sherry");
+        uwu.add("Herald");
+        uwu.add("Timmy");
+        uwu.add("Jerry");
+    }
 	public static interface List<E> extends Iterable<E> {
-
 		
 		public int size();
 		
@@ -39,9 +37,11 @@ public class Lab05P1Wrapper {
 		public E set(int index, E newElement);
 		
 		public void clear();
+				
+		public void changeOddEven();
 		
-		public void reverse();
-    
+		
+
 	}
 	
 	public static class SinglyLinkedList<E> implements List<E> {
@@ -294,31 +294,28 @@ public class Lab05P1Wrapper {
 
 
 		/*
-		 * Implement an O(n) member method called reverse() which reverses the elements in a list with n elements. 
-		 * For example, if L = {Ken, Al, Bob, Mel} then a call to L.reverse() turns L  into 
-		 * L = {Mel, Bob, Al, Ken}.
+		 * Write a member method changeOddEven which takes all elements in odd positions 
+		 * in the this list and moves them after all the even elements in the list. 
+		 * The relative order between the odd elements is maintained. The same applies to
+		 * the even elements. Remember that the first position is 0 which is considered even.
+		 * For example, if L = {Bob, Ned, Jil, Amy, Kim} then L.changeOddEven() turns L 
+		 * into L = {Bob, Jil, Kim, Ned, Amy}.
 		 */
 
 		@Override
-		public void reverse() {
-			int counter = 0;
-			Node<E> prev = null;
-			Node<E> currHead = header;
-			Node<E> next = currHead.getNext();
-			currHead.setNext(prev);
-			prev = currHead;
-			currHead = next;
-			while(currHead != null)
-			{
-				next = currHead.getNext();
-				currHead.setNext(prev);
-				prev = currHead;
-				currHead = next;
-			}
-			header = prev;
-			prev = currHead;
-			Node<E> head = new Node<E>(null,header);
-			header = head;
+		public void changeOddEven() {
+			// ADD YOU CODE HERE
+           Node<E> temp = header;
+           int currIndex = 0;
+           while(temp != null || currIndex == 0 || currIndex == currentSize) 
+           {
+                if(currIndex != 0 || currIndex != currentSize)
+                {
+                    
+                }
+
+           }
 		}
+
 	}
 }
