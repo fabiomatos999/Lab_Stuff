@@ -125,4 +125,3 @@ public class Lab07Stack1Wrapper {
 		return true;
 	}
 }
-

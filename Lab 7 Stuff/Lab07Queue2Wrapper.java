@@ -159,6 +159,11 @@ public class Lab07Queue2Wrapper {
 	public static Queue<String> bottomQueue(Queue<String> Q , int N){
 		String[] temp = new String[Q.size()];
 		int Originalsize = Q.size();
+		if(N > Q.size())
+		{
+			DoublyLinkedQueue<String> ret = new DoublyLinkedQueue<String>();
+			return ret;
+		}
 		for(int i = 0; i < Originalsize; i++)
 		{
 			temp[i] = Q.dequeue();

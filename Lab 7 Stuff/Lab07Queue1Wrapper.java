@@ -1,4 +1,7 @@
 public class Lab07Queue1Wrapper {
+	public static void main(String[] args) {
+		binaryNumberSequence(8);
+	}
 	
 	public static class EmptyQueueException extends RuntimeException {
 		public EmptyQueueException(String message) {
@@ -127,7 +130,7 @@ public class Lab07Queue1Wrapper {
 		/*ADD YOUR CODE HERE*/
         DoublyLinkedQueue<String> binQueue = new DoublyLinkedQueue<String>();
         DoublyLinkedQueue<Integer> decQueue = new DoublyLinkedQueue<Integer>();
-        String tempStr = null;
+        String tempStr = "";
         for(int i=1; i <= N; i++)
         {
             decQueue.enqueue(i);
@@ -135,6 +138,7 @@ public class Lab07Queue1Wrapper {
         while(!decQueue.isEmpty())
         {
             int num = decQueue.dequeue();
+
             while(num > 0)
             {
                 int mod = num%2;
@@ -142,9 +146,9 @@ public class Lab07Queue1Wrapper {
                 num = num/2;
             }
             binQueue.enqueue(tempStr);
-            tempStr = null;
+            tempStr = "";
         }
 
-		return null;
+		return binQueue;
 	}	
 }
