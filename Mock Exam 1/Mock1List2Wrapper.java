@@ -53,7 +53,7 @@ public class Mock1List2Wrapper {
 			}
 		} //End of Node class
 		
-		private Node<E> header;
+		public Node<E> header;
 		private int currentSize;
 		
 		public SinglyLinkedList() {
@@ -286,8 +286,13 @@ public class Mock1List2Wrapper {
 		public void mergeTwoSortedLists(List<E> l2){
 			sort(); //DO NOT REMOVE THIS METHOD
 			/*ADD YOUR CODE HERE*/
-			
+			for(int i = 0; i < l2.size();i++)
+			{
+				this.add(l2.get(i));
+			}
+			sort();
 		}
+
 	}
 
 }
