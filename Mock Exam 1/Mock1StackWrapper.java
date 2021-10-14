@@ -3,6 +3,10 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class Mock1StackWrapper {
+	public static void main(String[] args) {
+		int[] target = {2,3,4};
+		List<String> temp = buildArray(target, 4);
+	}
 	
 	public static interface Stack<E> {
 		   public void push(E newEntry);
@@ -346,7 +350,36 @@ public static interface List<E> extends Iterable<E> {
 	 */
 	public static List<String> buildArray(int[] target, int n) {
 		/*ADD YOUR CODE HERE*/
-		return null;
+		List<String> ret = new ArrayList<String>();
+		int missing = 0;
+		for(int i =0; i < target.length && i < n;i++)
+		{
+			if(i == 0 && target[i] != i+1)
+			{
+				ret.add("Push");
+				ret.add("Pop");
+			}
+			else if(target[i] == i+1) 
+			{
+				ret.add("Push");
+			}
+			else
+			{
+				int itter = 0;;
+				//if(target[i] == i+2)
+				//{
+				//	ret.add("Push");
+				//}
+				while(target[i] != i+itter+1 && i+itter < n)
+				{
+					ret.add("Push");
+					ret.add("Pop");
+					itter++;
+				}
+				ret.add("Push");
+			}
+		}
+		return ret;
 	}
 
 }
